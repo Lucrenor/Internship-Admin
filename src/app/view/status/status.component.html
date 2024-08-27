@@ -1,0 +1,103 @@
+<div class="main-container-top">
+  <div class="info-container">
+    <div class="info-header">
+      <h1><i class="bekleme-color">BEKLEME</i> Durumdaki Stajyerler</h1>
+    </div>
+    <div class="info-box">
+      <p-table [value]="pendingData">
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="info-topic-heading" style="width: 10%;">İsim Soyisim</th>
+            <th class="info-topic-heading" style="width: 20%;">İletişim Bilgileri</th>
+            <th class="info-topic-heading" style="width: 20%;">Onaylanan Staj Tarihi</th>
+            <th class="info-topic-heading" style="width: 10%;">Onaylanan Departman</th>
+            <th class="info-topic-heading" style="width: 10%;">Durum</th>
+            <th class="info-topic-heading" style="width: 25%;">Onayla / Reddet<br>Mail Gönder</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+          <tr>
+            <td class="info-parameter" style="width: 10%;">{{ item.name }}</td>
+            <td class="info-parameter" style="width: 15%;">{{ item.mail }}<br>{{ item.tel_no }}</td>
+            <td class="info-parameter" [innerHTML]="cleanStartDate(item.date)" style="width: 20%;"></td>
+            <td class="info-parameter" style="width: 20%;">{{ item.department }}</td>
+            <td class="info-parameter-status" [ngStyle]="{'color': getStatusColor(item.status)}" style="width: 10%;">{{ item.status }}</td>
+            <td style="width: 20%">
+              <div class="button-container">
+                <button class="pi pi-check approve-button" (click)="approveApplicant(item, 'Onaylandı')"></button>
+                <button class="pi pi-times decline-button" (click)="declineApplicant(item, 'Reddedildi')"></button>
+                <div class="button-container">
+                  <button class="pi pi-telegram mail-button-bekleme" (click)="sendEmails(item.status, item.name, item.department, item.date)" [disabled]="isButtonDisabled"></button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+
+<div class="main-container">
+  <div class="info-container">
+    <div class="info-header">
+      <h1><i class="onay-color">ONAY</i> Durumundaki Stajyerler</h1>
+    </div>
+    <div class="info-box">
+      <p-table [value]="approvedData">
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="info-topic-heading" style="width: 15%;">İsim Soyisim</th>
+            <th class="info-topic-heading" style="width: 20%;">İletişim Bilgileri</th>
+            <th class="info-topic-heading" style="width: 15%;">Onaylanan Staj Tarihi</th>
+            <th class="info-topic-heading" style="width: 25%;">Onaylanan Departman</th>
+            <th class="info-topic-heading" style="width: 15%;">Durum</th>
+            <th class="info-topic-heading" style="width: 10%;">Mail Gönder</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+          <tr>
+            <td class="info-parameter" style="width: 15%;">{{ item.name }}</td>
+            <td class="info-parameter" style="width: 20%;">{{ item.mail }}<br>{{ item.tel_no }}</td>
+            <td class="info-parameter" [innerHTML]="cleanStartDate(item.date)" style="width: 15%;"></td>
+            <td class="info-parameter" style="width: 25%;">{{ item.department }}</td>
+            <td class="info-parameter-status" [ngStyle]="{'color': getStatusColor(item.status)}" style="width: 15%;">{{ item.status }}</td>
+            <div class="button-container">
+              <button class="pi pi-telegram mail-button-bekleme" (click)="sendEmails(item.status, item.name, item.department, item.date)" [disabled]="isButtonDisabled"></button>
+            </div>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+
+<div class="main-container">
+  <div class="info-container">
+    <div class="info-header">
+      <h1><i class="red-color">RED</i> Durumundaki Stajyerler</h1>
+    </div>
+    <div class="info-box">
+      <p-table [value]="declinedData">
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="info-topic-heading" style="width: 30%;">İsim Soyisim</th>
+            <th class="info-topic-heading" style="width: 35%;">İletişim Bilgileri</th>
+            <th class="info-topic-heading" style="width: 25%;">Durum</th>
+            <th class="info-topic-heading" style="width: 10%;">Mail Gönder</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+          <tr>
+            <td class="info-parameter" style="width: 30%;">{{ item.name }}</td>
+            <td class="info-parameter" style="width: 35%;">{{ item.mail }}<br>{{ item.tel_no }}</td>
+            <td class="info-parameter-status" [ngStyle]="{'color': getStatusColor(item.status)}" style="width: 25%;">{{ item.status }}</td>
+            <div class="button-container" >
+              <button class="pi pi-telegram mail-button-bekleme" (click)="sendEmails(item.status, item.name, item.department, item.date)" [disabled]="isButtonDisabled"></button>
+            </div>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

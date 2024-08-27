@@ -1,0 +1,121 @@
+.nav-upper-container {
+  height: 5.5rem;
+  width: 100%;
+  padding: 0 2rem;
+  background-color: #f5f5f5;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+}
+
+.headline {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+button {
+  padding: 0 1.25rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #2b3f87;
+  color: #f5f5f5;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: #1f2d63;
+}
+
+.logo-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.logo-img{
+  margin-left: 2rem;
+  cursor: pointer;
+}
+
+.logo {
+  margin-left: 25vw;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2b3f87;
+  text-align: center;
+}
+
+.icon{
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+}
+
+.nav-left-container {
+  display: flex;
+  justify-content: left;
+  position: fixed;
+  top: 5.5rem;
+  width: 280px;
+  z-index: 100;
+}
+
+.nav {
+  min-height: auto;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 3rem;
+}
+
+.nav-container {
+  height: auto;
+  width: 280px;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-option {
+  width: 200px;
+  height: 70px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 1rem;
+  background-color: #2b3f87;
+  border: 1px solid #2b3f87;
+  border-radius: 3rem;
+  transition: all 0.1s ease-in-out;
+}
+.nav-option:hover {
+  background-color: #1f2d63;
+  cursor: pointer;
+}
+
+.nav-upper-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.op-icon{
+  margin-left: 2rem;
+}
+
+h3{
+  color: #f5f5f5;
+}
+

@@ -1,0 +1,32 @@
+<div class="main-container">
+  <div class="info-container">
+    <div class="info-header">
+      <h1>Mail Kutusu</h1>
+    </div>
+      <div class="info-box">
+        <p-table [value]="sentEmails">
+          <ng-template pTemplate="header">
+            <tr>
+              <th class="info-topic-heading-check"></th>
+              <th class="info-topic-heading" style="width: 20%;">Gönderilen Aday</th>
+              <th class="info-topic-heading" style="width: 80%;">Mail İçeriği</th>
+              <div class="info-topic-heading" >
+                <button class="pi pi-trash delete-button" (click)="deleteSelectedEmails()" ></button>
+              </div>
+
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-email>
+            <tr>
+              <td class="checker" style="width: 5%;">
+                <input type="checkbox" [(ngModel)]="email.selected">
+              </td>
+              <td class="info-parameter-recipient" style="width: 10%;">{{ email.recipient }}</td>
+              <td class="info-parameter" style="width: 15%;">{{ email.content }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+  </div>
+</div>
+

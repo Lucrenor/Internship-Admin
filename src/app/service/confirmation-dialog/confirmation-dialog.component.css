@@ -1,0 +1,37 @@
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f5f5f5;
+  border: 2px solid #141619;
+  border-radius: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.popup-content {
+  margin: auto;
+  text-align: center;
+  padding: 40px;
+  color: #123C69;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.onay-button{
+  background-color: #123C69;
+  color: #f5f5f5;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 2rem;
+  cursor: pointer;
+}

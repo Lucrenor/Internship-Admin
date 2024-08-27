@@ -1,0 +1,15 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #B3B4BD;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+

@@ -1,0 +1,90 @@
+<div class="main-container">
+  <div class="info-container">
+    <div class="info-header">
+      <h1>Aday Kontrol Paneli</h1>
+    </div>
+    <div class="info-box">
+      <p-table [value]="filteredData">
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="info-topic-heading" style="width: 15%;">İsim Soyisim</th>
+            <th class="info-topic-heading" style="width: 35%;">İletişim Bilgileri</th>
+            <th class="info-topic-heading" style="width: 10%;">CV Dosyası</th>
+            <th class="info-topic-heading" style="width: 10%;">Bilgiler</th>
+            <th class="info-topic-heading" style="width: 30%;">Durum</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+          <tr>
+            <td class="info-parameter" style="width: 15%;">{{ item.name }}</td>
+            <td class="info-parameter" style="width: 35%;">{{ item.mail }}<br>{{ item.tel_no }}</td>
+            <td style="width: 10%;"><button class="pi pi-link cv-button" (click)="goToCv(item.cvname)"></button></td>
+              <td style="width: 10%;"><button class="pi pi-info-circle info-button" (click)="showAllInfo(item)"></button></td>
+              <td style="width: 30%">
+              <div class="button-container">
+                <button class="pi pi-check approve-button" (click)="openSelectionPopup(item, 'Onaylandı')"></button>
+                <button class="pi pi-clock pending-button" (click)="openSelectionPopup(item, 'Beklemede')"></button>
+                <button class="pi pi-times decline-button" (click)="declineApplicant(item, 'Reddedildi')"></button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+
+<ng-template [ngIf]="selectedItem">
+    <div class="popup">
+        <div class="popup-content">
+            <span class="close" (click)="closePopup()">&times;</span>
+            <div class="bilgiler-container">
+                <div class="bilgiler-column">
+                    <div class="info-section">
+                        <h2>Üniversite</h2>
+                        <p>{{ selectedItem.uni }}</p>
+                        <h2>Bölüm</h2>
+                        <p>{{ selectedItem.degree }}</p>
+                        <h2>Dönem</h2>
+                        <p>{{ selectedItem.year }}</p>
+                    </div>
+                    <div class="info-section">
+                        <button class="pi pi-linkedin linkedin-button" (click)="goToLinkedin(selectedItem.linkedin)"></button>
+                        <button class="pi pi-github github-button" (click)="goToGithub(selectedItem.github)"></button>
+                    </div>
+                </div>
+                <div class="bilgiler-column">
+                    <h2>Bilinen Diller</h2>
+                    <div *ngFor="let lang of selectedItem.prog_lan" class="prog-lan-item">{{ lang }}</div>
+                </div>
+                <div class="bilgiler-column">
+                    <h2>Departman Tercihi</h2>
+                    <div *ngFor="let dept of selectedItem.intern_type" class="intern-type-item">{{ dept }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template [ngIf]="showSelectionPopup && currentItem">
+  <div class="popup">
+    <div class="popup-content">
+      <span class="close" (click)="showSelectionPopup = false">&times;</span>
+
+      <h3>Departman ve Başlangıç Tarihi Seçiniz</h3>
+      <div class="selection-container">
+        <label class="selection-label" for="department">Departman:</label>
+        <select class="popup-dropdown" id="department" [(ngModel)]="selectedDepartment">
+          <option class="popup-selection" *ngFor="let dept of getDepartments(currentItem)" [value]="dept">{{ dept }}</option>
+        </select>
+      </div>
+      <div class="selection-container">
+        <label class="selection-label-extra" for="startDate">Başlangıç Tarihi:</label>
+        <select class="popup-dropdown" id="startDate" [(ngModel)]="selectedStartDate">
+          <option class="popup-selection" *ngFor="let date of getStartDates(currentItem)" [value]="date">{{ date }}</option>
+        </select>
+      </div>
+      <button class="pi pi-sync submit-button" (click)="updateStatus()">Kaydet</button>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,22 @@
+<div class="DashboardLogin">
+  <div class="Form">
+    <div class="icon-div" >
+      <i class="pi pi-user icon" style="font-size: 6rem;" ></i>
+    </div>
+
+    <div class="p-field">
+      <label for="username" >Username</label>
+      <input id="username" type="text" pInputText [(ngModel)]="username" />
+    </div>
+
+    <div class="p-field">
+      <label for="password" >Password</label>
+      <input id="password" type="password" pInputText [(ngModel)]="password" />
+    </div>
+
+    <div class="p-field" >
+      <button pButton type="button" label="Login" (click)="login()"></button>
+    </div>
+
+  </div>
+</div>

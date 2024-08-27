@@ -1,0 +1,44 @@
+<div class="nav-upper-container">
+  <div class="logo-primary">
+    <img routerLink="/dashboard" class="logo-img" src="mergen.png" alt="logo">
+    <div class="logo">MergenTech Stajyer Yönetim Paneli</div>
+  </div>
+
+  <div class="headline">
+    <div>
+      <div class="mail">
+        <button routerLink="/inbox" pButton class ="icon" icon="pi pi-envelope" type="button"></button>
+      </div>
+    </div>
+
+    <div>
+    <div class="logout">
+      <button (click)="logout()" pButton class ="icon" icon="pi pi-sign-out" type="button"></button>
+    </div>
+    </div>
+</div>
+
+<div class="nav-left-container">
+<div class="nav-container">
+  <nav class="nav">
+    <div class="nav-upper-options">
+      <div routerLink="/applicants" class="nav-option">
+        <i class="pi pi-database op-icon"></i>
+        <h3>Başvurular</h3>
+      </div>
+
+      <div routerLink="/dashboard" class="nav-option">
+        <i class="pi pi-clipboard op-icon"></i>
+        <h3>Başvuru Yönetimi</h3>
+      </div>
+
+      <div routerLink="/status" class="nav-option">
+        <i class="pi pi-desktop op-icon"></i>
+        <h3>Durum</h3>
+      </div>
+
+    </div>
+  </nav>
+</div>
+</div>
+</div>
